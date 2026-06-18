@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# MongoDB data (if storing locally)
+data/
+*.seed
+
+# Build outputs
+client/build/
+client/node_modules/
+
+# Misc
+.cache
+.idea
+.vscode
+*.csproj
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Package files
+*.tgz
+*.zip
+
+# Editor directories
+.cproject
+.project
+.settings

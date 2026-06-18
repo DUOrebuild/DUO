@@ -1,0 +1,380 @@
+.App {
+  text-align: center;
+}
+
+.login-container, .register-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 300px;
+  margin: 2rem auto;
+}
+
+.login-container h2, .register-container h2 {
+  margin-top: 0;
+}
+
+.login-container input, .register-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-container button, .register-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-container button:hover, .register-container button:hover {
+  background: #45a049;
+}
+
+.login-container p, .register-container p {
+  margin-top: 1.5rem;
+}
+
+.login-container a, .register-container a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+.login-container a:hover, .register-container a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #f44336;
+  margin-top: 1rem;
+}
+
+.success {
+  color: #4caf50;
+  margin-top: 1rem;
+}
+
+.dashboard {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.dashboard h1 {
+  text-align: left;
+}
+
+.btn-primary, .btn-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #2196f3;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #0b7dda;
+}
+
+.btn-link {
+  color: #2196f3;
+  background: transparent;
+  border: 1px solid #2196f3;
+}
+
+.btn-link:hover {
+  background: #e3f2fd;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.skill-card h3 {
+  margin-top: 0;
+  color: #2196f3;
+}
+
+.skill-card p {
+  margin: 0.5rem 0;
+}
+
+.upload-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.upload-page h1 {
+  text-align: left;
+}
+
+.upload-page p {
+  margin-bottom: 1.5rem;
+}
+
+.upload-page input[type="file"] {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.upload-page button {
+  background: #4caf50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.upload-page button:hover {
+  background: #45a049;
+}
+
+.upload-page .error, .upload-page .success {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.upload-page .error {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.upload-page .success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+/* Skill Lessons Page */
+.skill-lessons {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.skill-lessons .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.skill-lessons h2 {
+  margin: 0;
+}
+
+.skill-lessons .lessons-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-lessons .lesson-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.skill-lessons .lesson-card h3 {
+  margin-top: 0;
+  color: #2196f3;
+}
+
+.skill-lessons .lesson-card p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+/* Lesson Exercises Page */
+.lesson-exercises {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.lesson-exercises .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.lesson-exercises h2 {
+  margin: 0;
+}
+
+.lesson-exercises .exercises-section {
+  margin-top: 2rem;
+}
+
+.lesson-exercises h3 {
+  margin-top: 0;
+  color: #2196f3;
+}
+
+.lesson-exercises .exercises-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.lesson-exercises .exercise-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.lesson-exercises .exercise-card h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.lesson-exercises .exercise-card ul {
+  padding-left: 1.5rem;
+}
+
+.lesson-exercises .exercise-card p {
+  margin: 0.5rem 0;
+}
+
+/* Exercise Taker Page */
+.exercise-taker {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.exercise-taker .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.exercise-taker h2 {
+  margin: 0;
+}
+
+.exercise-taker .exercise-content h3 {
+  margin-top: 0;
+}
+
+.exercise-taker .option {
+  margin: 0.5rem 0;
+}
+
+.exercise-taker label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.exercise-taker input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.exercise-taker input[type="text"],
+.exercise-taker textarea,
+.exercise-taker input[type="text"][placeholder] {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.exercise-taker textarea {
+  resize: vertical;
+}
+
+.exercise-taker .actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.exercise-taker button {
+  background: #2196f3;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.exercise-taker button:hover {
+  background: #0b7dda;
+}
+
+.exercise-taker .result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.exercise-taker .result.correct {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.exercise-taker .result.incorrect {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.exercise-taker .result h3 {
+  margin-top: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-container, .register-container {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .skills-grid, .lessons-list, .exercises-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard {
+    padding: 0 1rem;
+  }
+}
