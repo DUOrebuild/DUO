@@ -1,380 +1,484 @@
 .App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Theme toggle sun/moon icons */
+.theme-toggle::after {
+  content: '☀️';
+}
+
+[data-theme='dark'] .theme-toggle::after {
+  content: '🌙';
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--color-background);
+}
+
+/* Utility Classes */
+.text-center {
   text-align: center;
 }
 
-.login-container, .register-container {
-  background: white;
+/* Auth Container Styles */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.auth-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 400px;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  width: 300px;
-  margin: 2rem auto;
 }
 
-.login-container h2, .register-container h2 {
-  margin-top: 0;
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
 }
 
-.login-container input, .register-container input {
+.upload-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   width: 100%;
-  padding: 0.5rem;
-  margin: 0.5rem 0 1rem 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  max-width: 500px;
+  padding: 2rem;
 }
 
-.login-container button, .register-container button {
-  width: 100%;
-  padding: 0.75rem;
-  background: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
+/* Dashboard Header Styles */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.login-container button:hover, .register-container button:hover {
-  background: #45a049;
-}
-
-.login-container p, .register-container p {
-  margin-top: 1.5rem;
-}
-
-.login-container a, .register-container a {
-  color: #2196f3;
-  text-decoration: none;
-}
-
-.login-container a:hover, .register-container a:hover {
-  text-decoration: underline;
-}
-
-.error {
-  color: #f44336;
-  margin-top: 1rem;
-}
-
-.success {
-  color: #4caf50;
-  margin-top: 1rem;
-}
-
-.dashboard {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.dashboard h1 {
-  text-align: left;
-}
-
-.btn-primary, .btn-link {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 0;
-  text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
+/* Button Styles */
 .btn-primary {
-  background: #2196f3;
-  color: white;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-primary:hover {
-  background: #0b7dda;
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+.btn-success {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-success:hover {
+  background-color: var(--color-success-dark);
+  transform: translateY(-2px);
+}
+
+.btn-success:active {
+  transform: translateY(0);
+}
+
+/* Link Button Styles */
 .btn-link {
-  color: #2196f3;
-  background: transparent;
-  border: 1px solid #2196f3;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: var(--color-primary);
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
 .btn-link:hover {
-  background: #e3f2fd;
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+/* Card Styles */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Circular Progress Indicator Styles */
+.progress-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--color-gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  position: relative;
+}
+
+.progress-circle::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-primary) 0%,
+    var(--color-primary) var(--progress, 0%),
+    var(--color-gray-light) var(--progress, 0%) 100%
+  );
+  transition: background var(--transition-medium);
+}
+
+.progress-circle .progress-text {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.progress-circle .progress-label {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--color-gray-dark);
+}
+
+/* Skill Card Styles (Updated for Duolingo) */
 .skill-card {
-  background: white;
+  text-align: center;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  text-align: left;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .skill-card h3 {
-  margin-top: 0;
-  color: #2196f3;
+  margin: 0.5rem 0;
+  color: var(--color-primary);
+  font-size: 1.25rem;
 }
 
 .skill-card p {
+  color: var(--color-gray-dark);
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.skill-card .progress-circle {
+  margin: 1rem auto;
+}
+
+/* Lesson Card Styles (Updated for Duolingo) */
+.lesson-card {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.lesson-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.lesson-card h3 {
   margin: 0.5rem 0;
+  color: var(--color-primary);
+  font-size: 1.25rem;
 }
 
-.upload-page {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+.lesson-card p {
+  color: var(--color-gray-dark);
+  margin: 1rem 0;
+  line-height: 1.5;
+  min-height: 3rem;
 }
 
-.upload-page h1 {
-  text-align: left;
+.lesson-card .progress-circle {
+  margin: 1rem auto;
 }
 
-.upload-page p {
+/* Exercise Card Styles */
+.exercise-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.exercise-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.exercise-card h4 {
+  margin-top: 0;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.exercise-card ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.exercise-card p {
+  margin: 0.5rem 0;
+  color: var(--color-gray-dark);
+}
+
+/* Form Styles */
+.form-group {
   margin-bottom: 1.5rem;
 }
 
-.upload-page input[type="file"] {
-  width: 100%;
-  margin-bottom: 1rem;
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
-.upload-page button {
-  background: #4caf50;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.upload-page button:hover {
-  background: #45a049;
-}
-
-.upload-page .error, .upload-page .success {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 4px;
-}
-
-.upload-page .error {
-  background: #ffebee;
-  color: #c62828;
-  border: 1px solid #ef9a9a;
-}
-
-.upload-page .success {
-  background: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #a5d6a7;
-}
-
-/* Skill Lessons Page */
-.skill-lessons {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.skill-lessons .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.skill-lessons h2 {
-  margin: 0;
-}
-
-.skill-lessons .lessons-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.skill-lessons .lesson-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.skill-lessons .lesson-card h3 {
-  margin-top: 0;
-  color: #2196f3;
-}
-
-.skill-lessons .lesson-card p {
-  margin: 0.5rem 0;
-  color: #555;
-}
-
-/* Lesson Exercises Page */
-.lesson-exercises {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.lesson-exercises .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.lesson-exercises h2 {
-  margin: 0;
-}
-
-.lesson-exercises .exercises-section {
-  margin-top: 2rem;
-}
-
-.lesson-exercises h3 {
-  margin-top: 0;
-  color: #2196f3;
-}
-
-.lesson-exercises .exercises-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.lesson-exercises .exercise-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.lesson-exercises .exercise-card h4 {
-  margin-top: 0;
-  color: #333;
-}
-
-.lesson-exercises .exercise-card ul {
-  padding-left: 1.5rem;
-}
-
-.lesson-exercises .exercise-card p {
-  margin: 0.5rem 0;
-}
-
-/* Exercise Taker Page */
-.exercise-taker {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.exercise-taker .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.exercise-taker h2 {
-  margin: 0;
-}
-
-.exercise-taker .exercise-content h3 {
-  margin-top: 0;
-}
-
-.exercise-taker .option {
-  margin: 0.5rem 0;
-}
-
-.exercise-taker label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.exercise-taker input[type="radio"] {
-  margin-right: 0.5rem;
-}
-
-.exercise-taker input[type="text"],
-.exercise-taker textarea,
-.exercise-taker input[type="text"][placeholder] {
+.form-input {
   width: 100%;
   padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   box-sizing: border-box;
-}
-
-.exercise-taker textarea {
-  resize: vertical;
-}
-
-.exercise-taker .actions {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.exercise-taker button {
-  background: #2196f3;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
   font-size: 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.exercise-taker button:hover {
-  background: #0b7dda;
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.25);
 }
 
-.exercise-taker .result {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
+/* Radio and Checkbox Styles */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.exercise-taker .result.correct {
-  background: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #a5d6a7;
+.option-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
 }
 
-.exercise-taker .result.incorrect {
-  background: #ffebee;
-  color: #c62828;
-  border: 1px solid #ef9a9a;
+.option-label:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.exercise-taker .result h3 {
-  margin-top: 0;
+.option-label input {
+  margin-right: 0.75rem;
+  width: auto;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .login-container, .register-container {
-    width: 90%;
-    margin: 2rem auto;
+.option-text {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* Error and Success Messages */
+.error {
+  color: var(--color-error);
+  background-color: rgba(244, 67, 54, 0.1);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+  border-left: 3px solid var(--color-error);
+}
+
+.success {
+  color: var(--color-success);
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+  border-left: 3px solid var(--color-success);
+}
+
+/* Hint Text */
+.hint {
+  font-size: 0.85rem;
+  color: var(--color-gray-dark);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 
-  .skills-grid, .lessons-list, .exercises-list {
-    grid-template-columns: 1fr;
+  .main-content {
+    padding: 1rem;
   }
 
-  .dashboard {
-    padding: 0 1rem;
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skill-card,
+  .lesson-card,
+  .exercise-card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .main-content {
+    padding: 0.5rem;
+  }
+
+  .auth-card,
+  .upload-card {
+    padding: 1.5rem;
+  }
+
+  .progress-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .progress-circle::before {
+    width: 60px;
+    height: 60px;
   }
 }

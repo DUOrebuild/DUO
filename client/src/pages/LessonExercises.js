@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const LessonExercises = () => {
   const { token } = useAuth();
+  const { theme } = useTheme();
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const [exercises, setExercises] = useState([]);
@@ -35,8 +37,8 @@ const LessonExercises = () => {
     fetchData();
   }, [token, lessonId]);
 
-  if (loading) return <div>Loading exercises...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return <div className="main-content">Loading exercises...</div>;
+  if (error) return <div className="main-content error">{error}</div>;
 
   // Split exercises into theoretical and practical
   const theoretical = exercises.filter(ex =>
@@ -47,8 +49,8 @@ const LessonExercises = () => {
   );
 
   return (
-    <div className="lesson-exercises">
-      <div className="header">
+    <div className="main-content">
+      <div className="dashboard-header">
         <h2>{lessonTitle}</h2>
         <Link to={`/skills/${exercises[0]?.skillId}/lessons`} className="btn-link">
           ← Back to Lessons
@@ -58,7 +60,7 @@ const LessonExercises = () => {
       <div className="exercises-section">
         <h3>Theoretical Exercises</h3>
         {theoretical.length === 0 ? (
-          <p>No theoretical exercises.</p>
+          <p className="text-center">No theoretical exercises.</p>
         ) : (
           <div className="exercises-list">
             {theoretical.map(ex => (
@@ -93,7 +95,7 @@ const LessonExercises = () => {
 
         <h3>Practical Exercises</h3>
         {practical.length === 0 ? (
-          <p>No practical exercises.</p>
+          <p className="text-center">No practical exercises.</p>
         ) : (
           <div className="exercises-list">
             {practical.map(ex => (

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const FileUpload = () => {
   const { token } = useAuth();
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -53,24 +55,29 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="upload-page">
-      <h1>Upload File to Generate Lessons</h1>
-      <p>Supported formats: PDF, DOC, TXT, Images (JPG, PNG, etc.)</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Choose a file:</label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            required
-          />
+    <div className="main-content">
+      <div className="upload-container">
+        <div className="upload-card">
+          <h1>Upload File to Generate Lessons</h1>
+          <p>Supported formats: PDF, DOC, TXT, Images (JPG, PNG, etc.)</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Choose a file:</label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                required
+                className="form-input"
+              />
+            </div>
+            <button type="submit" disabled={uploading} className="btn-primary">
+              {uploading ? 'Uploading...' : 'Upload File'}
+            </button>
+            {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>}
+          </form>
         </div>
-        <button type="submit" disabled={uploading}>
-          {uploading ? 'Uploading...' : 'Upload File'}
-        </button>
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
-      </form>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const SkillLessons = () => {
   const { token } = useAuth();
+  const { theme } = useTheme();
   const { skillId } = useParams();
   const navigate = useNavigate();
   const [lessons, setLessons] = useState([]);
@@ -35,23 +37,28 @@ const SkillLessons = () => {
     fetchData();
   }, [token, skillId]);
 
-  if (loading) return <div>Loading lessons...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return <div className="main-content">Loading lessons...</div>;
+  if (error) return <div className="main-content error">{error}</div>;
 
   return (
-    <div className="skill-lessons">
-      <div className="header">
+    <div className="main-content">
+      <div className="dashboard-header">
         <h2>{skillName}</h2>
         <Link to="/dashboard" className="btn-link">
           ← Back to Dashboard
         </Link>
       </div>
       {lessons.length === 0 ? (
-        <p>No lessons yet for this skill.</p>
+        <p className="text-center">No lessons yet for this skill.</p>
       ) : (
-        <div className="lessons-list">
+        <div className="lessons-grid">
           {lessons.map(lesson => (
             <div key={lesson._id} className="lesson-card">
+              {/* In a real app, we would calculate progress from user data */}
+              <div className="progress-circle" style={{ '--progress': '75%' }}>
+                <div className="progress-text">75%</div>
+                <div className="progress-label">Progress</div>
+              </div>
               <h3>{lesson.title}</h3>
               <p>{lesson.description}</p>
               <Link
