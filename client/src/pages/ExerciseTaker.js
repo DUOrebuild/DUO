@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ExerciseTaker = () => {
   const { token } = useAuth();
+  const { theme } = useTheme();
   const { exerciseId } = useParams();
   const navigate = useNavigate();
   const [exercise, setExercise] = useState(null);
@@ -34,8 +36,8 @@ const ExerciseTaker = () => {
     fetchExercise();
   }, [token, exerciseId]);
 
-  if (loading) return <div>Loading exercise...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return <div className="main-content">Loading exercise...</div>;
+  if (error) return <div className="main-content error">{error}</div>;
   if (!exercise) return <div>Exercise not found</div>;
 
   const handleSubmit = async (e) => {
@@ -88,8 +90,8 @@ const ExerciseTaker = () => {
   };
 
   return (
-    <div className="exercise-taker">
-      <div className="header">
+    <div className="main-content">
+      <div className="dashboard-header">
         <h2>Exercise</h2>
         <navigate>
           <button onClick={() => navigate(-1)} className="btn-link">
@@ -104,9 +106,9 @@ const ExerciseTaker = () => {
         {exercise.type === 'multiple-choice' && (
           <>
             <p>Select an option:</p>
-            {exercise.options.map((opt, idx) => (
-              <div key={idx} className="option">
-                <label>
+            <div className="options-list">
+              {exercise.options.map((opt, idx) => (
+                <label key={idx} className="option-label">
                   <input
                     type="radio"
                     value={idx}
@@ -114,18 +116,18 @@ const ExerciseTaker = () => {
                     onChange={(e) => setSelectedOption(parseInt(e.target.value))}
                     disabled={submitting}
                   />
-                  {opt}
+                  <span className="option-text">{opt}</span>
                 </label>
-              </div>
-            ))}
+              ))}
+            </div>
           </>
         )}
 
         {exercise.type === 'true-false' && (
           <>
             <p>Select True or False:</p>
-            <div>
-              <label>
+            <div className="options-list">
+              <label className="option-label">
                 <input
                   type="radio"
                   value="true"
@@ -133,11 +135,9 @@ const ExerciseTaker = () => {
                   onChange={(e) => setTfAnswer(e.target.value)}
                   disabled={submitting}
                 />
-                True
+                <span className="option-text">True</span>
               </label>
-            </div>
-            <div>
-              <label>
+              <label className="option-label">
                 <input
                   type="radio"
                   value="false"
@@ -145,7 +145,7 @@ const ExerciseTaker = () => {
                   onChange={(e) => setTfAnswer(e.target.value)}
                   disabled={submitting}
                 />
-                False
+                <span className="option-text">False</span>
               </label>
             </div>
           </>
@@ -160,6 +160,7 @@ const ExerciseTaker = () => {
               onChange={(e) => setAnswer(e.target.value)}
               disabled={submitting}
               placeholder="Enter your answer"
+              className="form-input"
             />
           </>
         )}
@@ -173,9 +174,10 @@ const ExerciseTaker = () => {
               onChange={(e) => setAnswer(e.target.value)}
               disabled={submitting}
               placeholder="e.g., A:1,B:2,C:3"
+              className="form-input"
             />
-            <p><small>Options: {JSON.stringify(exercise.options)}</small></p>
-            <p><small>Correct pairs: {JSON.stringify(exercise.correctAnswer)}</small></p>
+            <p className="hint"><small>Options: {JSON.stringify(exercise.options)}</small></p>
+            <p className="hint"><small>Correct pairs: {JSON.stringify(exercise.correctAnswer)}</small></p>
           </>
         )}
 
@@ -188,6 +190,7 @@ const ExerciseTaker = () => {
               disabled={submitting}
               rows="4"
               placeholder="Enter your answer"
+              className="form-input"
             />
           </>
         )}
@@ -198,6 +201,7 @@ const ExerciseTaker = () => {
           type="submit"
           onClick={handleSubmit}
           disabled={submitting || !exercise}
+          className="btn-primary"
         >
           {submitting ? 'Submitting...' : 'Submit Answer'}
         </button>
