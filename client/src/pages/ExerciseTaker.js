@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ExerciseTaker = () => {
   const { token } = useAuth();
-  const { theme } = useTheme();
   const { exerciseId } = useParams();
   const navigate = useNavigate();
   const [exercise, setExercise] = useState(null);
@@ -93,11 +91,9 @@ const ExerciseTaker = () => {
     <div className="main-content">
       <div className="dashboard-header">
         <h2>Exercise</h2>
-        <navigate>
-          <button onClick={() => navigate(-1)} className="btn-link">
+        <button onClick={() => navigate(-1)} className="btn-link">
             ← Back
           </button>
-        </navigate>
       </div>
 
       <div className="exercise-content">

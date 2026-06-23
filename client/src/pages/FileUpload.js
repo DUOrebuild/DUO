@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const FileUpload = () => {
   const { token } = useAuth();
-  const { theme } = useTheme();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);

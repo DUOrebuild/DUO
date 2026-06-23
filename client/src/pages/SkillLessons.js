@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
 const SkillLessons = () => {
   const { token } = useAuth();
-  const { theme } = useTheme();
   const { skillId } = useParams();
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
